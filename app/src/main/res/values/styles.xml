@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:colorPrimaryDark">#E65100</item>
+        <item name="android:colorPrimary">#EF6C00</item>
+        <item name="android:colorBackground">#616161</item>
+        <item name="android:colorButtonNormal">#EF6C00</item>
+    </style>
+
+    <!--<style name="SingleEntryTheme" parent="Theme.AppCompat">
+        <item name="android:colorPrimaryDark">#E65100</item>
+        <item name="android:colorPrimary">#EF6C00</item>
+        <item name="android:colorBackground">#616161</item>
+        <item name="android:colorButtonNormal">#EF6C00</item>
+    </style>-->
+
+    <!--<style name="ToolBarTheme" parent="Theme.AppCompat">
+        <item name="android:colorPrimary">#EF6C00</item>
+    </style>-->
+    <style name="CardViewTheme" parent="CardView.Light" />
+</resources>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Workmen Compensation </string>
+
+
+    <!--Main Activity-->
+    <string name="main_hint_insurer">Insurer Name</string>
+    <string name="main_hint_rate">Rate</string>
+    <string name="main_hint_discount">Discount</string>
+
+    <string name="main_tb_reset">Reset</string>
+    <!-- End -->
+
+    <!--Single Entry-->
+    <string name="title_single_entry">Enter Details to add Entry</string>
+    <string name="hint_se_salary">Monthly Salary</string>
+    <string name="hint_se_no_person">No of persons</string>
+    <string name="hint_se_rate">Rate</string>
+    <string name="hint_se_ann_salary">Annual Salary</string>
+    <string name="hint_se_sum_insured">Sum Insured</string>
+    <string name="hint_se_premium">Premium</string>
+    <string name="btn_se_reset">Reset</string>
+    <string name="btn_se_add">Add Entry</string>
+    <string name="se_tb_discard">Discard</string>
+    <!--End-->
+
+    <!--Summary ACtivity-->
+    <string name="summ_tb_delete">Delete</string>
+    <string name="summ_tb_share">Share</string>
+    <!--End-->
+
+</resources>
+
+
