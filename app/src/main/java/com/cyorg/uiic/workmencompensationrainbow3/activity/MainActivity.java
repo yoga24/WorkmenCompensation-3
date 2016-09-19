@@ -12,14 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.cyorg.uiic.workmencompensationrainbow3.R;
 import com.cyorg.uiic.workmencompensationrainbow3.utils.CommonUtils;
+import com.cyorg.uiic.workmencompensationrainbow3.utils.WcConstants;
 
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     private Toolbar toolBar;
     private EditText insurer;
     private EditText rate;
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        requestRunTimePermission();
+        createAppDirectory();
 
         //Assign elements
         toolBar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -51,30 +54,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         proceed.setOnClickListener(this);
 
-        if (CommonUtils.redefineValues) {
+        if (WcConstants.isRedefineValues()) {
             insurer.setText(CommonUtils.insurerName);
             rate.setText(CommonUtils.rate);
             discount.setText(CommonUtils.discount);
+            WcConstants.setRedefineValues(false);
+        }   else    {
+            CommonUtils.setFileNameAndPath();
         }
-
-        createAppDirectory();
-    }
-
-    private void requestRunTimePermission() {
 
     }
 
     private void createAppDirectory() {
-        File directory = new File(CommonUtils.FILE_DIRECTORY);
-        Log.w(MainActivity.class.getSimpleName(), "File Directory in Main Class :: " + getExternalFilesDir(null));
-        Log.w(MainActivity.class.getSimpleName(), "File Directory in Main Class :: " + CommonUtils.FILE_DIRECTORY);
+        File directory = new File(WcConstants.getFileDirectory());
         if (!directory.exists()) {
-            Log.w(MainActivity.class.getSimpleName(), "DIRECTORY DOES NOT EXIST");
-            boolean status = directory.mkdirs();
-            Log.w(MainActivity.class.getSimpleName(), "DIRECTORY CREATION STATUS :: " + status);
-        }
-        if (!directory.exists()) {
-            Log.w(MainActivity.class.getSimpleName(), "DIRECTORY NOT CREATED");
+            Log.i(TAG, "Directory NOT EXISTS ** Creation Status :: " + directory.mkdirs());
         }
     }
 
@@ -100,11 +94,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             CommonUtils.rate = Integer.parseInt(rate.getText().toString());
             CommonUtils.insurerName = insurer.getText().toString();
             CommonUtils.discount = Integer.parseInt(discount.getText().toString());
-            if (CommonUtils.redefineValues) {
-                CommonUtils.redefineValues = false;
-            }
+
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(MainActivity.this, "Action Not Supported", Toast.LENGTH_SHORT).show();
     }
 
     private boolean validDiscount() {

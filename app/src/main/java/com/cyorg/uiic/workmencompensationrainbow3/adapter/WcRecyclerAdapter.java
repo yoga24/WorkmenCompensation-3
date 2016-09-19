@@ -1,7 +1,6 @@
 package com.cyorg.uiic.workmencompensationrainbow3.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,6 @@ public class WcRecyclerAdapter extends RecyclerView.Adapter<WcRecyclerAdapter.Wc
     @Override
     public void onBindViewHolder(WcViewHolder holder, int position) {
         SingleEntryModel entryModel = CommonUtils.getDataList().get(position);
-        Log.i("tag", "Null Check :: holder - " + holder);
-        Log.i("tag", "Null Check :: salary - " + holder.salary);
         holder.salary.setText(Double.toString(entryModel.getSalary()));
         holder.noPersons.setText(String.valueOf(entryModel.getNoPersons()));
         holder.premium.setText(Double.toString(entryModel.getPremium()));
@@ -45,7 +42,6 @@ public class WcRecyclerAdapter extends RecyclerView.Adapter<WcRecyclerAdapter.Wc
         public WcViewHolder(View itemView) {
             super(itemView);
             salary = (TextView) itemView.findViewById(R.id.card_salary);
-            Log.i("tag", "Null Check :: salary - " + salary);
             noPersons = (TextView) itemView.findViewById(R.id.card_no_persons);
             premium = (TextView) itemView.findViewById(R.id.card_premium);
             delCheck = (CheckBox) itemView.findViewById(R.id.card_chkbox_del);

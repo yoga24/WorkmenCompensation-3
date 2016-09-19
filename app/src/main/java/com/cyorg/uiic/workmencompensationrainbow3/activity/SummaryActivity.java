@@ -11,7 +11,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,15 +72,13 @@ public class SummaryActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        //getMenuInflater().inflate(R.menu.menu_toolbar_se, menu);
         toolbar.inflateMenu(R.menu.menu_toolbar_summ);
-
+        //Read the share menu item
         MenuItem shareItem = menu.findItem(R.id.summ_tb_share);
-        //MenuItemCompat.setActionProvider(shareItem,mShareActionProvider);
+        //Assign EasyShareAction to SHARE MenuItem
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        Log.i(TAG, "Share Action Provider :: " + mShareActionProvider);
-        Log.i(TAG, "File Path :: " + CommonUtils.FILE_DIRECTORY);
-//        mShareActionProvider.setShareHistoryFileName("custom_share_history.xml");
+        //Custom File to write share history
+        mShareActionProvider.setShareHistoryFileName("custom_share_history.xml");
 
         return true;
     }
@@ -105,6 +102,11 @@ public class SummaryActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         Intent intent = new Intent(this, SingleEntryActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(SummaryActivity.this, "Action Not Supported", Toast.LENGTH_SHORT).show();
     }
 
     private Intent createShareIntent() {

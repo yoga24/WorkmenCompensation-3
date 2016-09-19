@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.cyorg.uiic.workmencompensationrainbow3.R;
 import com.cyorg.uiic.workmencompensationrainbow3.model.SingleEntryModel;
@@ -122,6 +123,11 @@ public class SingleEntryActivity extends AppCompatActivity implements View.OnCli
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar_se, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(SingleEntryActivity.this, "Action Not Supported", Toast.LENGTH_SHORT).show();
     }
 
     private boolean validateFields() {

@@ -1,6 +1,5 @@
 package com.cyorg.uiic.workmencompensationrainbow3.utils;
 
-import android.os.Environment;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -15,9 +14,8 @@ import java.util.List;
 
 public class CommonUtils {
 
-    public static final String FILE_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cyorg/WorkmenCompensation";
+
     private static final String TAG = "CommonUtils";
-    public static boolean redefineValues;
     public static int rate;
     public static String insurerName;
     public static int discount;
@@ -26,9 +24,7 @@ public class CommonUtils {
     public static double serviceTax = 0.00;
     public static double totalPremium = 0.00;
     public static double finalPremium = 0.00;
-    public static String fileName;
-    public static String filePath;
-    public static boolean changesMadeAfterFileSave = false;
+
     private static List<SingleEntryModel> dataList;
 
     public static void testData() {
@@ -39,18 +35,6 @@ public class CommonUtils {
             entryModel.setSalary(100000);
         }
     }
-
-//    public static void intializeAttribs(Map<String,Object> map) {
-//
-//        if(! (boolean) map.get(WcConstants.REDEFINE_VALUES)) {
-//            dataList = new ArrayList<>();
-//        }
-//
-//        rate = (int) map.get(WcConstants.RATE);
-//        insurerName = (String) map.get(WcConstants.INSURER);
-//        discount = (int) map.get(WcConstants.DISCOUNT);
-//
-//    }
 
     public static void resetForm(ViewGroup viewGroup) {
 
@@ -109,12 +93,12 @@ public class CommonUtils {
     }
 
 
-    private static void setFileNameAndPath() {
+    public static void setFileNameAndPath() {
 
-        fileName = insurerName.toUpperCase() + "-" + Calendar.getInstance().getTimeInMillis() + ".pdf";
-        filePath = CommonUtils.FILE_DIRECTORY + "/" + fileName;
+        WcConstants.setFileName(insurerName.toUpperCase() + "-" + Calendar.getInstance().getTimeInMillis() + ".pdf");
+        WcConstants.setFilePath(WcConstants.getFileDirectory() + "/" + WcConstants.getFileName());
 
-        Log.i(TAG, "Generated File :: " + filePath);
+        Log.i(TAG, "File Path :: " + WcConstants.getFilePath());
     }
 
 }

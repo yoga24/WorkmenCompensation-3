@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.cyorg.uiic.workmencompensationrainbow3.model.SingleEntryModel;
 import com.cyorg.uiic.workmencompensationrainbow3.utils.CommonUtils;
+import com.cyorg.uiic.workmencompensationrainbow3.utils.WcConstants;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Phrase;
@@ -28,7 +29,7 @@ public class CustomPdfGenerator {
 
         Document finalReport;
         //PdfWriter pdfWriter;
-        String filePath = CommonUtils.filePath;
+        String filePath = WcConstants.getFilePath();
         float[] columnWidths = {3f, 1.5f, 1f, 3f, 4f, 2f};
 
 //        Font textFoneBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0, 0, 0));
