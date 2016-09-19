@@ -58,9 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             insurer.setText(CommonUtils.insurerName);
             rate.setText(CommonUtils.rate);
             discount.setText(CommonUtils.discount);
-            WcConstants.setRedefineValues(false);
-        }   else    {
-            CommonUtils.setFileNameAndPath();
         }
 
     }
@@ -94,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             CommonUtils.rate = Integer.parseInt(rate.getText().toString());
             CommonUtils.insurerName = insurer.getText().toString();
             CommonUtils.discount = Integer.parseInt(discount.getText().toString());
+
+            if (WcConstants.isRedefineValues()) {
+                WcConstants.setRedefineValues(false);
+            } else {
+                CommonUtils.setFileNameAndPath();
+            }
 
             startActivity(intent);
         }
