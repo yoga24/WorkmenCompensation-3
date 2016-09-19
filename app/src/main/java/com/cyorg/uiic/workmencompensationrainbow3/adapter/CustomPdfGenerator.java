@@ -132,7 +132,7 @@ public class CustomPdfGenerator {
 
         PdfPCell serviceTaxStringCell = new PdfPCell();
         serviceTaxStringCell.setColspan(5);
-        serviceTaxStringCell.setPhrase(new Phrase("Service Tax @ " + CommonUtils.discount + "%"));
+        serviceTaxStringCell.setPhrase(new Phrase("Service Tax @ 15%"));
         serviceTaxRow.add(serviceTaxStringCell);
 
         PdfPCell serviceTaxValueCell = new PdfPCell();
