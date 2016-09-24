@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showRegistrationActivity() {
 
         Boolean isFirstRun = getSharedPreferences(WcConstants.SHARED_PREFRENCES_FILE_NAME, MODE_PRIVATE).getBoolean("isFirstRun", true);
+        Log.i(TAG,"FIRST RUN CHECK :: "+isFirstRun);
 
         if (isFirstRun) {
             //show start activity
