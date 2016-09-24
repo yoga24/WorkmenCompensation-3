@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         createAppDirectory();
 
+        showRegistrationActivity();
+
         //Assign elements
         toolBar = (Toolbar) findViewById(R.id.main_toolbar);
         insurer = (EditText) findViewById(R.id.main_edit_insurer);
@@ -60,13 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             discount.setText(CommonUtils.discount);
         }
 
-    }
-
-    private void createAppDirectory() {
-        File directory = new File(WcConstants.getFileDirectory());
-        if (!directory.exists()) {
-            Log.i(TAG, "Directory NOT EXISTS ** Creation Status :: " + directory.mkdirs());
-        }
     }
 
     @Override
@@ -132,6 +127,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         insurerLayout.setErrorEnabled(false);
         return true;
+    }
+
+    private void showRegistrationActivity() {
+
+        Boolean isFirstRun = getSharedPreferences(WcConstants.SHARED_PREFRENCES_FILE_NAME, MODE_PRIVATE).getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            //show start activity
+            startActivity(new Intent(MainActivity.this, UserFirstRegistrationActivity.class));
+            getSharedPreferences(WcConstants.SHARED_PREFRENCES_FILE_NAME, MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
+            //Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private void createAppDirectory() {
+        File directory = new File(WcConstants.FILE_DIRECTORY);
+        if (!directory.exists()) {
+            Log.i(TAG, "Directory NOT EXISTS ** Creation Status :: " + directory.mkdirs());
+        }
     }
 
 }

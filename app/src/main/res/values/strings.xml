@@ -10,6 +10,20 @@
     <string name="main_tb_reset">Reset</string>
     <!-- End -->
 
+    <!-- User First Registration -->
+    <string-array name="ur_deignation_spinner_array">
+        <item>Assisstant Branch Manager</item>
+        <item>Branch Manager</item>
+        <item>Senior Branch Manager</item>
+        <item>Divisional Manager</item>
+        <item>Regional Manager</item>
+        <item>Other</item>
+    </string-array>
+    <string name="ur_hint_person_name">UserName</string>
+    <string name="ur_hint_desgination">Designation</string>
+    <string name="ur_btn_start">Start</string>
+    <!-- End -->
+
     <!--Single Entry-->
     <string name="title_single_entry">Enter Details to add Entry</string>
     <string name="hint_se_salary">Monthly Salary</string>

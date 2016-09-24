@@ -63,9 +63,13 @@ public class CommonUtils {
         return dataList;
     }
 
-    public static boolean emptyStringCheck(Editable editable) {
-        int length = editable.length();
-        return 0 == editable.length() || editable.toString().trim().length() == 0 || "".equals(editable.toString().trim());
+    public static boolean emptyStringCheck(Editable... editableList) {
+        for (Editable editable : editableList) {
+            int length = editable.length();
+            if (0 == editable.length() || editable.toString().trim().length() == 0 || "".equals(editable.toString().trim()))
+                return true;
+        }
+        return false;
     }
 
     public static void finalizeCalculation() {
@@ -92,13 +96,14 @@ public class CommonUtils {
         finalPremium = 0.00;
     }
 
-
     public static void setFileNameAndPath() {
 
         WcConstants.setFileName(insurerName.toUpperCase() + "-" + Calendar.getInstance().getTimeInMillis() + ".pdf");
-        WcConstants.setFilePath(WcConstants.getFileDirectory() + "/" + WcConstants.getFileName());
+        WcConstants.setFilePath(WcConstants.FILE_DIRECTORY + "/" + WcConstants.getFileName());
 
         Log.i(TAG, "File Path :: " + WcConstants.getFilePath());
     }
 
+    public static void createCanvasTemplate(String userName, String designation) {
+    }
 }

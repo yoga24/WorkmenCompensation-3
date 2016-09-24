@@ -172,6 +172,7 @@ public class SingleEntryActivity extends AppCompatActivity implements View.OnCli
         if (!CommonUtils.emptyStringCheck(salary.getText())) {
             valSalary = Double.parseDouble(salary.getText().toString());
             annSalary.setText(String.valueOf(valSalary * 12));
+            calculateSumInsured();
             calculatePremium();
         }
     }
