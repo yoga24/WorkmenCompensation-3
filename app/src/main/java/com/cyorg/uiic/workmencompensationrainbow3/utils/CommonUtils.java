@@ -81,6 +81,9 @@ public class CommonUtils {
             totalSumInsured = totalSumInsured + entryModel.getSumInsured();
             totalPremium = totalPremium + entryModel.getPremium();
         }
+//        int lastElementIndex = getDataList().size() -1;
+//        totalSumInsured = totalSumInsured + getDataList().get(lastElementIndex).getSumInsured();
+//        totalPremium = totalPremium + getDataList().get(lastElementIndex).getPremium();
 
         discountedPremium = (totalPremium * (100 - discount)) / 100;
         serviceTax = discountedPremium * 15 / 100;
@@ -105,5 +108,14 @@ public class CommonUtils {
     }
 
     public static void createCanvasTemplate(String userName, String designation) {
+    }
+
+    public static synchronized void finalizeCalculation(SingleEntryModel entryObject) {
+        totalSumInsured = totalSumInsured + entryObject.getSumInsured();
+        totalPremium = totalPremium + entryObject.getPremium();
+
+        discountedPremium = (totalPremium * (100 - discount)) / 100;
+        serviceTax = discountedPremium * 15 / 100;
+        finalPremium = discountedPremium + serviceTax;
     }
 }

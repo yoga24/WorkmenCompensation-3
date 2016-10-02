@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //show start activity
             startActivity(new Intent(MainActivity.this, UserFirstRegistrationActivity.class));
             getSharedPreferences(WcConstants.SHARED_PREFRENCES_FILE_NAME, MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
-            //Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG).show();
         }
 
     }

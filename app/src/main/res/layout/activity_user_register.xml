@@ -10,7 +10,7 @@
         android:layout_height="80dp"
         android:contentDescription="UIIC Company Logo"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo_uiic_0" />
+        android:src="@drawable/logo_uiic" />
 
     <EditText
         android:id="@+id/ur_edit_username"
